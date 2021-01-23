@@ -15,9 +15,9 @@ git_ps1 () {
         local modified="\e[32m\u2713"
 
         if [[ local_mod -gt 0 ]]; then
-            local files_staged="$(git status -s --column --porcelain | egrep -c '^[AMDRCU]')"
-            local files_unstaged="$(git status -s --column --porcelain | egrep -c '^.[AMDRCU]')"
-            local files_untracked="$(git status -s --column --porcelain | egrep -c '^\?\?')"
+            local files_staged="$(git status -s --column --porcelain | grep -E -c '^[AMDRCU]')"
+            local files_unstaged="$(git status -s --column --porcelain | grep -E -c '^.[AMDRCU]')"
+            local files_untracked="$(git status -s --column --porcelain | grep -E -c '^\?\?')"
             local icon_staged="\u2963"
             local icon_unstaged="\u29fa"
             local icon_untracked="\u2bbf"
