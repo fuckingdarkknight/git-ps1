@@ -38,7 +38,7 @@ git_ps1 () {
             fi
             modified="${files_staged} ${files_unstaged} ${files_untracked}"
         fi
-        echo -e "${coloring}\u2329${remote}:${branch} ${modified}${coloring}\u232a${coloringend}"
+        echo -e "${coloring}\u2329${remote}:${branch} ${modified}${coloring}\u232a${coloringend}\u08"
     fi
 }
 
