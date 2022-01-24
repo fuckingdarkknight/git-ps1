@@ -14,7 +14,14 @@ git_ps1() {
         local coloringend='\001\033[m\002'
         local local_mod="$(git status -s --no-column | wc -l)"
         local not_pushed="$(git diff --stat --cached --name-only ${remote}/${branch} 2>/dev/null || echo "NR")"
-        if [ "$not_pushed" != "NR" ]; then not_pushed="$(echo "$not_pushed" | grep -c -v "^$")"; fi
+        if [ "$not_pushed" != "NR" ]; then
+            not_pushed="$(echo "$not_pushed" | grep -c -v '^$')"
+            if [[ not_pushed -eq 0 ]]; then
+                not_pushed='\u2605'
+            else
+                not_pushed="$not_pushed \u2BB4"
+            fi
+        fi
         local modified='\001\033[32m\002\u2713'
 
         if [[ local_mod -gt 0 ]]; then
